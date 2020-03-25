@@ -78,6 +78,9 @@ class Chat extends React.Component {
                     const messages = JSON.parse(JSON.stringify(this.state.messages));
                     messages.push(data);
                     this.setState({messages});
+                    setTimeout(()=>{
+                        window.scrollTo(0,document.body.scrollHeight);
+                    },100);
                 }
             });
             this.socket.on("users", (data)=>{

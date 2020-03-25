@@ -1,5 +1,5 @@
 const urls = {
-    socketUrl : "http://localhost:9000"
+    socketUrl : "/"
 }
 
 export default urls;

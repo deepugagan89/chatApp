@@ -1,16 +1,18 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var connectedusers = [];
 
-server.listen(9000, ()=>{
+server.listen(process.env.PORT || 9000, ()=>{
     console.log("Listening at port - 9000");
 });
 
+app.use(express.static('build'));
 
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
+// app.get('/', function (req, res) {
+//   res.sendFile(__dirname + '/build/index.html');
+// });
 
 io.on('connection', function (socket) {
     socket.on('userDetails', function (data) {
